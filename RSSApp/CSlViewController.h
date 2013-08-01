@@ -11,4 +11,5 @@
 @interface CSlViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
