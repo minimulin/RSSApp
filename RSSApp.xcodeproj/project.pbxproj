@@ -25,6 +25,7 @@
 		63388A8017AECAD400C70428 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63388A7F17AECAD400C70428 /* SystemConfiguration.framework */; };
 		63388A8317AECB1400C70428 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63388A8217AECB1400C70428 /* Reachability.m */; };
 		63388A8517AECDF500C70428 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 63388A8417AECDF500C70428 /* link.png */; };
+		63388A8817AEE9E600C70428 /* CSlTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63388A8717AEE9E600C70428 /* CSlTabBarController.m */; };
 		639E3E4E17A7B1C6007257A3 /* CSlArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639E3E4D17A7B1C6007257A3 /* CSlArticleViewController.m */; };
 		639E3E5217A7E090007257A3 /* rss.png in Resources */ = {isa = PBXBuildFile; fileRef = 639E3E5117A7E090007257A3 /* rss.png */; };
 		639E3E5417A7E0D4007257A3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 639E3E5317A7E0D4007257A3 /* heart.png */; };
@@ -57,6 +58,8 @@
 		63388A8117AECB1400C70428 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		63388A8217AECB1400C70428 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		63388A8417AECDF500C70428 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = "<group>"; };
+		63388A8617AEE9E600C70428 /* CSlTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSlTabBarController.h; sourceTree = "<group>"; };
+		63388A8717AEE9E600C70428 /* CSlTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSlTabBarController.m; sourceTree = "<group>"; };
 		639E3E4C17A7B1C6007257A3 /* CSlArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSlArticleViewController.h; sourceTree = "<group>"; };
 		639E3E4D17A7B1C6007257A3 /* CSlArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSlArticleViewController.m; sourceTree = "<group>"; };
 		639E3E5117A7E090007257A3 /* rss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rss.png; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				63388A7417AE7D8000C70428 /* CSlFavoriteListViewController.m */,
 				639E3E4C17A7B1C6007257A3 /* CSlArticleViewController.h */,
 				639E3E4D17A7B1C6007257A3 /* CSlArticleViewController.m */,
+				63388A8617AEE9E600C70428 /* CSlTabBarController.h */,
+				63388A8717AEE9E600C70428 /* CSlTabBarController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				63388A7517AE7D8000C70428 /* CSlFavoriteListViewController.m in Sources */,
 				63388A7B17AEC2A800C70428 /* Article.m in Sources */,
 				63388A8317AECB1400C70428 /* Reachability.m in Sources */,
+				63388A8817AEE9E600C70428 /* CSlTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

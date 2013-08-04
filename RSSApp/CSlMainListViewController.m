@@ -23,6 +23,45 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    CSlAppDelegate *appDelegate = (CSlAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = [appDelegate managedObjectContext];
+    
+    //Раскомментировать для удаления всех статей в БД
+    //    NSFetchRequest * request2;
+    //    request2 = [[NSFetchRequest alloc] init];
+    //    [request2 setEntity:[NSEntityDescription entityForName:@"Article"
+    //                                    inManagedObjectContext:self.managedObjectContext]];
+    //    NSError * error2 = nil;
+    //    NSArray * objects2 = [self.managedObjectContext executeFetchRequest:request2 error:&error2];
+    //    NSLog(@"Статей в базе до запроса: %i",[objects2 count]);
+    //
+    //    for (Article * currentArticle in objects2) {
+    //        [self.managedObjectContext deleteObject:currentArticle];
+    //
+    //    }
+    //    [self.managedObjectContext save:&error2];
+    
+    self.title = @"Список статей";
+    
+    self.tableView.delegate = self;
+    
+    NSURL *url = [NSURL URLWithString:@"http://ithappens.ru/rss"];
+    
+    NSXMLParser *xmlParser2 = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    [xmlParser2 setDelegate:self];
+	BOOL success = [xmlParser2 parse];
+    if (!success) {
+        NSLog(@"Что-то произошло и XML'ка оказалась плохой");
+    } else {
+        [self updateTableView];
+    }
+    
+    self.tabBar.delegate = self;
+}
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     [self.currentStringValue setString:@""];
     if ([elementName isEqualToString:@"item"]) {
@@ -94,45 +133,6 @@
             }
         }
     }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    CSlAppDelegate *appDelegate = (CSlAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = [appDelegate managedObjectContext];
-    
-    //Раскомментировать для удаления всех статей в БД
-//    NSFetchRequest * request2;
-//    request2 = [[NSFetchRequest alloc] init];
-//    [request2 setEntity:[NSEntityDescription entityForName:@"Article"
-//                                    inManagedObjectContext:self.managedObjectContext]];
-//    NSError * error2 = nil;
-//    NSArray * objects2 = [self.managedObjectContext executeFetchRequest:request2 error:&error2];
-//    NSLog(@"Статей в базе до запроса: %i",[objects2 count]);
-//    
-//    for (Article * currentArticle in objects2) {
-//        [self.managedObjectContext deleteObject:currentArticle];
-//        
-//    }
-//    [self.managedObjectContext save:&error2];
-    
-    self.title = @"Список статей";
-    
-    self.tableView.delegate = self;
-    
-    NSURL *url = [NSURL URLWithString:@"http://ithappens.ru/rss"];
-    
-    NSXMLParser *xmlParser2 = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    [xmlParser2 setDelegate:self];
-	BOOL success = [xmlParser2 parse];
-    if (!success) {
-        NSLog(@"Что-то произошло и XML'ка оказалась плохой");
-    } else {
-        [self updateTableView];
-    }
-    
-    self.tabBar.delegate = self;
 }
 
 - (void)viewDidUnload {
@@ -241,6 +241,19 @@
     
     //Инициализация массива статей для TableView
     self.tableData = [[NSMutableArray alloc] initWithArray:objects];
+    
+    request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Article"
+                                   inManagedObjectContext:self.managedObjectContext]];
+    [request setSortDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"index" ascending:NO]]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"(isFavorite = 1)"]];
+    error = nil;
+    objects = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if ([objects count]>0) {
+        [[[self.tabBarController.tabBar items] objectAtIndex:1] setEnabled:YES];
+    } else {
+        [[[self.tabBarController.tabBar items] objectAtIndex:1] setEnabled:NO];
+    }
     
     [self.tableView reloadData];
 }

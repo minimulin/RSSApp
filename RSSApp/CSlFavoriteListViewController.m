@@ -44,6 +44,13 @@
     //Инициализация массива статей для TableView
     self.tableData = [[NSMutableArray alloc] initWithArray:objects];
     
+    if ([objects count]>0) {
+        
+    } else {
+        [self.tabBarController setSelectedIndex:0];
+        [[[self.tabBarController.tabBar items] objectAtIndex:1] setEnabled:NO];
+    }
+    
     [self.tableView reloadData];
 }
 

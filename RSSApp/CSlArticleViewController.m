@@ -8,6 +8,7 @@
 
 #import "CSlArticleViewController.h"
 #include "Reachability.h"
+#include "CSlAppDelegate.h"
 
 @interface CSlArticleViewController ()
 
@@ -29,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CSlAppDelegate *appDelegate = (CSlAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = [appDelegate managedObjectContext];
     
     self.mainLabel.text = self.article.name;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -79,6 +83,19 @@
     }
     NSError *error = nil;
     [self.managedObjectContext save:&error];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Article"
+                                   inManagedObjectContext:self.managedObjectContext]];
+    [request setSortDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"index" ascending:NO]]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"(isFavorite = 1)"]];
+    error = nil;
+    NSArray *objects = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if ([objects count]>0) {
+        [[[self.tabBarController.tabBar items] objectAtIndex:1] setEnabled:YES];
+    } else {
+        [[[self.tabBarController.tabBar items] objectAtIndex:1] setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -131,11 +131,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="63" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Q-nf-rmH">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SimpleTableItem" rowHeight="63" id="Yov-jK-Qxu">
+                                    <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SimpleTableItem" rowHeight="63" id="Yov-jK-Qxu">
                                         <rect key="frame" x="0.0" y="22" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="This is the main title of article, which can take about 2 lines of this label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-2l-Ixe">
@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="393" y="316"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Sl Tab Bar Controller-->
         <scene sceneID="qtY-Hh-j4C">
             <objects>
-                <tabBarController id="DMZ-Oz-LHj" sceneMemberID="viewController">
+                <tabBarController id="DMZ-Oz-LHj" customClass="CSlTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vVl-oS-Urw">
@@ -372,6 +372,9 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="CSlTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CSlTabBarController.h"/>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
@@ -382,6 +385,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YoY-K6-4aN"/>
+        <segue reference="iGN-VP-3S6"/>
     </inferredMetricsTieBreakers>
 </document>
