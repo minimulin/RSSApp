@@ -2,7 +2,7 @@
 //  Article.m
 //  RSSApp
 //
-//  Created by Ренара on 02.08.13.
+//  Created by Ренара on 04.08.13.
 //  Copyright (c) 2013 Ренара. All rights reserved.
 //
 
@@ -11,11 +11,12 @@
 
 @implementation Article
 
-@dynamic name;
-@dynamic pubDate;
 @dynamic anounce;
+@dynamic index;
 @dynamic isFavorite;
 @dynamic isRead;
-@dynamic index;
+@dynamic name;
+@dynamic pubDate;
+@dynamic link;
 
 @end

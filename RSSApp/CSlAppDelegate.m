@@ -2,12 +2,13 @@
 //  CSlAppDelegate.m
 //  RSSApp
 //
-//  Created by Ренара on 28.07.13.
-//  Copyright (c) 2013 Ренара. All rights reserved.
+//  Created by mrStiher on 28.07.13.
+//  Copyright (c) 2013 mrStiher. All rights reserved.
 //
 
 #import "CSlAppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "Reachability.h"
 
 @implementation CSlAppDelegate
 
@@ -18,6 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    
+    if (![reachability currentReachabilityStatus] != NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Подключение" message:@"Отсутствует подключение к сети Интернет" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]; [alert show];
+    }
+    
     return YES;
 }
 							
@@ -101,7 +108,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ddddd.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"rssApp.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

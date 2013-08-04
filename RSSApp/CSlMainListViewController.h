@@ -2,13 +2,13 @@
 //  CSlViewController.h
 //  RSSApp
 //
-//  Created by Ренара on 28.07.13.
-//  Copyright (c) 2013 Ренара. All rights reserved.
+//  Created by mrStiher on 28.07.13.
+//  Copyright (c) 2013 mrStiher. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface CSlViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITabBarDelegate>
+@interface CSlMainListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITabBar *tabBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
